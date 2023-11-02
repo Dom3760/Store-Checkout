@@ -1,0 +1,49 @@
+body
+{
+    margin: 0;
+    padding: 0;
+    background-color: rgb(219, 219, 219);
+}
+
+#pageContent
+{
+    width: 80%;
+    min-height: 4000px;
+    max-height: 10000px;
+    background-color: rgb(255, 255, 255);
+    position:relative;
+    top: 0px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+h1
+{
+    font-size: 30px;
+    text-align: center;
+}
+
+h2
+{
+    text-align: center;
+}
+
+#barcodeContainer
+{
+    display: block;
+}
+
+#add
+{
+    display: block;
+}
+
+.item
+{
+    width: 100px;
+    height: 200px;
+    border: 1px solid black;
+    border-radius: 25px;
+}
+
+*{border: 1px solid black;}
