@@ -4,6 +4,13 @@ const input = document.getElementById("barcodeNum");
 const input2 = document.getElementById("quantity");
 const container = document.getElementById("cartSection")
 
+<<<<<<< HEAD
+const totalBeforeTaxText = document.getElementById("totatBeforeTaxText")
+const taxText = document.getElementById("taxText")
+const totalText = document.getElementById("totalText")
+
+=======
+>>>>>>> 8bc45181cb4264e4f9b5ce73a51934465d43ed83
 const image = document.createElement("img")
 const plusButton = document.createElement("button")
 plusButton.innerText = "+"
@@ -11,6 +18,9 @@ const minusButton = document.createElement("button")
 minusButton.innerText = "-"
 
 var totalCost= 0;
+var tax = 0
+var subtotal = 0
+var i;
 
 //creating a function to check if the barcode is on the array and will add to the total cost
 function addItem()
@@ -29,30 +39,66 @@ function addItem()
             const Title = document.createElement("h2")
             const itemContainer = document.createElement("div")
             itemContainer.classList.add("item");
+<<<<<<< HEAD
+            const quantityBox = document.createElement("div")
+            // quantityBox.classList.add("")
+=======
+>>>>>>> 8bc45181cb4264e4f9b5ce73a51934465d43ed83
 
             container.appendChild(itemContainer);
             itemContainer.appendChild (Title);
             Title.innerText = (items[i].name);
-            itemContainer.appendChild (plusButton);
+            image.src = items[i].image.src;
+            itemContainer.appendChild(image);
+            image.classList.add("image")
             itemContainer.appendChild (minusButton);
+<<<<<<< HEAD
+            itemContainer.appendChild (plusButton);
+            cost()
+=======
             totalCost += ((items[i].price * quantity)/100)
             console.log(totalCost)
             
 
+>>>>>>> 8bc45181cb4264e4f9b5ce73a51934465d43ed83
             break;
         }
     }
 }
 
+<<<<<<< HEAD
+function cost()
+{
+    totalCost += (items[i].price * quantity);
+    tax += ((totalCost * 0.09)/100);
+    subtotal += ((totalCost + tax)/100);
+    totalCost = (totalCost/100)
+            
+    totalBeforeTaxText.innerText = "Total before Tax:$" + Math.floor(totalCost);
+    taxText.innerText = "Tax cost (9%):$"+ Math.floor(tax)
+    totalText.innerText = "Subtotal:$" + Math.floor(subtotal)
+}
+
+=======
+>>>>>>> 8bc45181cb4264e4f9b5ce73a51934465d43ed83
 //making objects so the function has somthing to search for
 const handSanitiser = {
     name: "Hand Sanitiser(40 ounce)",
     barcodeNum: "041348001533",
     price: 549,
+<<<<<<< HEAD
+    image: {
+        src: "pictures/Screen Shot 2023-11-02 at 8.31.16 AM.png"
+    },
+    description: 
+    ["40-Ounce bottle of hand sanitiser."]
+        
+=======
 
     description: 
     ["40-Ounce bottle of hand sanitiser."]
     
+>>>>>>> 8bc45181cb4264e4f9b5ce73a51934465d43ed83
 };
 
 const multiportAdapter = {

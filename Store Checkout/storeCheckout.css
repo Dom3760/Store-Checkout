@@ -28,14 +28,22 @@ h1
 {
     border: 1px solid black;
     width: 200px;
+<<<<<<< HEAD
+    border-radius: 25px;
+=======
     border-radius: 25px;;
+>>>>>>> 8bc45181cb4264e4f9b5ce73a51934465d43ed83
     padding: 10px;
     float: right;
     margin-right: 20px;
     margin-top: -90px;
 }
 
+<<<<<<< HEAD
+#totalText
+=======
 #total
+>>>>>>> 8bc45181cb4264e4f9b5ce73a51934465d43ed83
 {
     color: red;
     font-size: 19px;
@@ -59,7 +67,11 @@ h2
 .item
 {
     width: 300px;
+<<<<<<< HEAD
+    height: 250px;
+=======
     height: 200px;
+>>>>>>> 8bc45181cb4264e4f9b5ce73a51934465d43ed83
     border: 1px solid black;
     border-radius: 25px;
     margin-top: 10px;
@@ -71,6 +83,16 @@ h2
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 10px;
+<<<<<<< HEAD
+}
+
+.image
+{
+    object-fit: cover;
+    width: 150px;
+    margin: 0 auto;
+=======
+>>>>>>> 8bc45181cb4264e4f9b5ce73a51934465d43ed83
 }
 
 /* *{border: 1px solid black;} */
