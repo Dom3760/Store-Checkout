@@ -83,7 +83,22 @@ h2
 {
     object-fit: cover;
     width: 100px;
+    margin-left: 33%;
+    margin-top: -15px;
+}
+
+.quantityBox
+{
+    width: 100px;
+    height: 50px;
     margin: 0 auto;
+    margin-top: -20px;
+}
+
+.quantityText
+{
+    display: inline-block;
+    padding: 10px;
 }
 
 /* *{border: 1px solid black;} */

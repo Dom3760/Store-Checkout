@@ -16,6 +16,9 @@ plusButton.innerText = "+"
 const minusButton = document.createElement("button")
 minusButton.innerText = "-"
 
+const quantityText = document.createElement ("p")
+quantityText.classList.add("quantityText")
+
 var totalCost= 0;
 var tax = 0
 var subtotal = 0
@@ -37,7 +40,7 @@ function addItem()
         {
             if(items[i].quantity > 0)
             {
-                items[i].quantity+= quantity
+                items[i].quantity = quantity
                 break;
             }
             const Title = document.createElement("h2")
@@ -45,7 +48,7 @@ function addItem()
             itemContainer.classList.add("item");
 
             const quantityBox = document.createElement("div")
-            // quantityBox.classList.add("")
+            quantityBox.classList.add("quantityBox")
 
 
             container.appendChild(itemContainer);
@@ -55,11 +58,13 @@ function addItem()
             itemContainer.appendChild(image);
             image.classList.add("image")
             itemContainer.appendChild (quantityBox)
+            
+            items[i].quantity += quantity
             quantityBox.appendChild (minusButton);
-            quantityBox.innerText = items[i].quantity;
+            quantityBox.appendChild(quantityText)
+            quantityText.innerText = items[i].quantity;
             quantityBox.appendChild (plusButton);
             // cost(items[i].price)
-            items[i].quantity += quantity
             break;
         }
     }
