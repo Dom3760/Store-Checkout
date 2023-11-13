@@ -8,21 +8,11 @@ const totalBeforeTaxText = document.getElementById("totatBeforeTaxText");
 const taxText = document.getElementById("taxText");
 const totalText = document.getElementById("totalText");
 
+// const quantityText = document.createElement ("p");
+// quantityText.classList.add("quantityText");
 
-const image = document.createElement("img");
-image.classList.add("image");
-
-const plusButton = document.createElement("button");
-plusButton.innerText = "+";
-
-const minusButton = document.createElement("button");
-minusButton.innerText = "-";
-
-const quantityText = document.createElement ("p");
-quantityText.classList.add("quantityText");
-
-const quantityText = document.createElement ("p")
-quantityText.classList.add("quantityText")
+// const quantityText = document.createElement ("p")
+// quantityText.classList.add("quantityText")
 
 var totalCost= 0;
 var tax = 0;
@@ -42,32 +32,42 @@ function addItem()
     {
         if(barcode === items[i].barcodeNum)
         {
-            if(items[i].quantity > 0)
-            {
-                items[i].quantity = quantity
-                break;
-            }
             var currentItemIndex = i;
 
             const Title = document.createElement("h2");
             const itemContainer = document.createElement("div");
             itemContainer.classList.add("item");
 
-<<<<<<< HEAD
             const quantityBox = document.createElement("div");
             quantityBox.classList.add("quantityBox");
-=======
-            const quantityBox = document.createElement("div")
-            quantityBox.classList.add("quantityBox")
->>>>>>> 47043b3ce7184120dfcbfae0cc56c2710937fc2d
 
+            // const quantityBox = document.createElement("div")
+            // quantityBox.classList.add("quantityBox")
+            const image = document.createElement("img");
+            image.classList.add("image");
+
+            const plusButton = document.createElement("button");
+            plusButton.innerText = "+";
+
+            const minusButton = document.createElement("button");
+            minusButton.innerText = "-";
+
+            const quantityText = document.createElement ("p");
+            quantityText.classList.add("quantityText");
+            
+            if(items[i].quantity > 0)
+            {
+                items[i].quantity += quantity
+                quantityText.innerText = (items[i].quantity)
+
+                break;
+            }
 
             container.appendChild(itemContainer);
             itemContainer.appendChild (Title);
             Title.innerText = (items[i].name);
             image.src = items[i].image.src;
             itemContainer.appendChild(image);
-<<<<<<< HEAD
             
             itemContainer.appendChild (quantityBox);
             items[i].quantity += quantity;
@@ -75,17 +75,9 @@ function addItem()
             quantityBox.appendChild(quantityText);
             quantityText.innerText = items[i].quantity;
             quantityBox.appendChild (plusButton);
-=======
+
             image.classList.add("image")
             itemContainer.appendChild (quantityBox)
-            
-            items[i].quantity += quantity
-            quantityBox.appendChild (minusButton);
-            quantityBox.appendChild(quantityText)
-            quantityText.innerText = items[i].quantity;
-            quantityBox.appendChild (plusButton);
-            // cost(items[i].price)
->>>>>>> 47043b3ce7184120dfcbfae0cc56c2710937fc2d
             break;
         }
     }
@@ -93,26 +85,31 @@ function addItem()
 
 function cost()
 {
-    totalCost += ((items[i].price * quantity)/100)
+    totalCost += ((items[currentItemIndex].price * quantity))
     tax += ((totalCost * 0.09)/100);
     subtotal += ((totalCost + tax)/100);
     totalCost = (totalCost/100)
             
-    totalBeforeTaxText.innerText = "Total before Tax:$" + Math.floor(totalCost);
-    taxText.innerText = "Tax cost (9%):$"+ Math.floor(tax)
-    totalText.innerText = "Subtotal:$" + Math.floor(subtotal)
+    totalBeforeTaxText.innerText = "Total before Tax:$" + (totalCost);
+    taxText.innerText = "Tax cost (9%):$"+ (tax)
+    totalText.innerText = "Subtotal:$" + (subtotal)
 }
 
-function plus()
-{
-    items[currentItemIndex].quantity ++
-    quantityText.innerText = items[currentItemIndex].quantity;
+function plus() {
+    items[currentItemIndex].quantity++;
+    updateQuantityDisplay();
 }
 
-function minus()
-{
-    items[currentItemIndex].quantity --
-    quantityText.innerText = items[currentItemIndex].quantity;
+function minus() {
+    items[currentItemIndex].quantity--;
+    updateQuantityDisplay();
+}
+
+function updateQuantityDisplay() {
+    var quantityText = document.getElementById("quantityText");
+    if (quantityText) {
+        quantityText.innerText = items[currentItemIndex].quantity;
+    }
 }
 
 
@@ -120,7 +117,7 @@ function minus()
 const handSanitiser = {
     name: "Hand Sanitiser(40 ounce)",
     barcodeNum: "041348001533",
-    price: 5.49,
+    price: 549,
     image: {
         src: "pictures/Hand-RX-Hand-Sanitiser.png"
     },
@@ -133,7 +130,7 @@ const handSanitiser = {
 const multiportAdapter = {
     name: "Multiport Adapter",
     barcodeNum: "X0032YGP2T",
-    price: 25.99,
+    price: 2599,
     image: {
         src: "pictures/multiportAdapter.png"
     },
