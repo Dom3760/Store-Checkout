@@ -55,6 +55,12 @@ function addItem()
 
             const quantityText = document.createElement ("p");
             quantityText.classList.add("quantityText");
+
+            for(let i = 0; i < itemsInCart.length; i++){
+                if(){
+                    itemsInCart[i].querySelector(".quantityText").innerText = 
+                }
+            }
             
             if(items[i].quantity > 0)
             {
@@ -64,7 +70,7 @@ function addItem()
                 break;
             }
             
-            itemsInCart.push(items[i])
+     
             console.log(itemsInCart)
 
             itemContainer.appendChild (Title);
@@ -81,6 +87,8 @@ function addItem()
             image.classList.add("image")
             itemContainer.appendChild (quantityBox)
             container.appendChild(itemContainer);
+
+            itemsInCart.push(itemContainer);
 
 
             plusButton.addEventListener ("click",plus)
