@@ -22,18 +22,23 @@ function addItem()
 
     if(barcode === "")
     {
-        console.log("hi")
+        alert ("please enter a barcode number")
+    }
+    if(quantity === "" || quantity <= 0)
+    {
+        alert ("please enter valid number (1-∞)")
+        return;
     }
     for (var i = 0; i < items.length; i++)
     {
         if(barcode === items[i].barcodeNum)
         {
-            itemsInCart.push(items[i])
-            console.log(itemsInCart)
+
+            const itemContainer = document.createElement("div");
 
             var currentItemIndex = i;
             const Title = document.createElement("h2");
-            const itemContainer = document.createElement("div");
+            // Title.innerText = items[i].name
             itemContainer.classList.add("item");
 
             const quantityBox = document.createElement("div");
@@ -53,19 +58,20 @@ function addItem()
             
             if(items[i].quantity > 0)
             {
-                items[i].quantity += quantity
-                quantityText.innerText = items[i].quantity
+                items[i].quantity = items[i].quantity + quantity
+                quantityText.innerText = (items[i].quantity)
 
                 break;
             }
+            
+            itemsInCart.push(items[i])
+            console.log(itemsInCart)
 
-            container.appendChild(itemContainer);
             itemContainer.appendChild (Title);
             Title.innerText = (items[i].name);
             image.src = items[i].image.src;
             itemContainer.appendChild(image);
             
-            itemContainer.appendChild (quantityBox);
             items[i].quantity += quantity;
             quantityBox.appendChild (minusButton);
             quantityBox.appendChild(quantityText);
@@ -74,6 +80,8 @@ function addItem()
 
             image.classList.add("image")
             itemContainer.appendChild (quantityBox)
+            container.appendChild(itemContainer);
+
 
             plusButton.addEventListener ("click",plus)
             function plus()
@@ -89,14 +97,14 @@ function addItem()
                 quantityText.innerText = (items[currentItemIndex].quantity)
                 cost()
             }
-            for(x=0 ; i < itemsInCart.length ; i ++)
+            for(let x=0 ; i < itemsInCart.length ; i ++)
             {
                 cost()
                 function cost()
                 {
                 totalCost = ((items[x].price * items[x].quantity))
                 tax = ((Math.floor(totalCost * 0.09))/100);
-                subtotal = ((totalCost + tax)/100);
+                subtotal = ((Math.floor(totalCost + tax))/100);
                 totalCost = (totalCost/100)
                 
                 var total2 = 0
@@ -107,13 +115,18 @@ function addItem()
                 tax2 += tax
                 subtotal2 += subtotal
                         
-                totalBeforeTaxText.innerText = "Total before Tax:$" + (totalCost);
-                taxText.innerText = "Tax cost (9%):$"+ (tax)
-                totalText.innerText = "Subtotal:$" + (subtotal)
+                totalBeforeTaxText.innerText = "Total before Tax:$" + (total2);
+                taxText.innerText = "Tax cost (9%):$"+ (tax2)
+                totalText.innerText = "Subtotal:$" + (subtotal2)
                 }
             }
             break;
         }
+        // else
+        // {
+        //     alert ("Item not found.")
+        //     break;
+        // }
     }
 }
 
@@ -126,7 +139,7 @@ const handSanitiser = {
     image: {
         src: "pictures/Hand-RX-Hand-Sanitiser.png"
     },
-    quantity: "",
+    quantity: 0,
 
     description: 
     ["40-Ounce bottle of hand sanitiser."]
@@ -142,7 +155,7 @@ const multiportAdapter = {
     quantity: 0,
     
     description: 
-    ["adapter that lets you plug in 3 usb's, and hdmi, and ethernet cord, sd cards(micro and normal), and a usb-c cord"]
+    ["adapter that lets you plug in 3 usb's, an hdmi, an ethernet cord, sd cards(micro and normal), and a usb-c cord"]
 };
 
 const  javaScriptTextbook = {
