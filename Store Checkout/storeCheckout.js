@@ -29,6 +29,7 @@ function addItem()
         alert ("please enter valid number (1-∞)")
         return;
     }
+    
     for (var i = 0; i < items.length; i++)
     {
         if(barcode === items[i].barcodeNum)
@@ -57,8 +58,8 @@ function addItem()
             quantityText.classList.add("quantityText");
 
             for(let i = 0; i < itemsInCart.length; i++){
-                if(){
-                    itemsInCart[i].querySelector(".quantityText").innerText = 
+                if(items[i].quantity > 0){
+                    itemsInCart[i].querySelector(".quantityText").innerText = parseInt(items[currentItemIndex].quantity, 10);
                 }
             }
             
@@ -104,7 +105,15 @@ function addItem()
                 items[currentItemIndex].quantity --
                 quantityText.innerText = (items[currentItemIndex].quantity)
                 cost()
+                
+
+                if(items[currentItemIndex].quantity < 1 )
+                {
+                    itemContainer.remove()
+                }
             }
+
+            
             for(let x=0 ; i < itemsInCart.length ; i ++)
             {
                 cost()
@@ -112,8 +121,8 @@ function addItem()
                 {
                 totalCost = ((items[x].price * items[x].quantity))
                 tax = ((Math.floor(totalCost * 0.09))/100);
-                subtotal = ((Math.floor(totalCost + tax))/100);
                 totalCost = (totalCost/100)
+                subtotal = ((Math.floor((totalCost + tax)*100))/100)
                 
                 var total2 = 0
                 var tax2 = 0
