@@ -57,22 +57,27 @@ function addItem()
             const quantityText = document.createElement ("p");
             quantityText.classList.add("quantityText");
 
-            for(let i = 0; i < itemsInCart.length; i++){
-                if(items[i].quantity > 0){
-                    itemsInCart[i].querySelector(".quantityText").innerText = parseInt(items[currentItemIndex].quantity, 10);
-                }
+            itemsInCart.push(itemContainer);
+            console.log(itemsInCart)
+            if(items[i] === itemsInCart[itemsInCart.length])
+            {
+                itemsInCart.pop
+            }
+
+            for(let i = 0; i < itemsInCart.length; i++)
+            {
+                if (items[currentItemIndex].quantity > 0) {
+                    itemsInCart[itemsInCart.length - 1].querySelector(".quantityText").innerText = items[currentItemIndex].quantity;
+                }                
             }
             
             if(items[i].quantity > 0)
             {
-                items[i].quantity = items[i].quantity + quantity
-                quantityText.innerText = (items[i].quantity)
+                items[i].quantity += 1
+                quantityText.innerText = parseInt(items[i].quantity)
 
                 break;
             }
-            
-     
-            console.log(itemsInCart)
 
             itemContainer.appendChild (Title);
             Title.innerText = (items[i].name);
@@ -89,21 +94,18 @@ function addItem()
             itemContainer.appendChild (quantityBox)
             container.appendChild(itemContainer);
 
-            itemsInCart.push(itemContainer);
-
-
             plusButton.addEventListener ("click",plus)
             function plus()
             {
                 items[currentItemIndex].quantity ++
-                quantityText.innerText = (items[currentItemIndex].quantity)
+                quantityText.innerText = parseInt(items[currentItemIndex].quantity)
                 cost()
             }
             minusButton.addEventListener ("click", minus)
             function minus ()
             {
                 items[currentItemIndex].quantity --
-                quantityText.innerText = (items[currentItemIndex].quantity)
+                quantityText.innerText = parseInt(items[currentItemIndex].quantity)
                 cost()
                 
 
@@ -113,13 +115,10 @@ function addItem()
                 }
             }
 
-            
-            for(let x=0 ; i < itemsInCart.length ; i ++)
-            {
                 cost()
                 function cost()
                 {
-                totalCost = ((items[x].price * items[x].quantity))
+                totalCost = ((items[i].price * items[i].quantity))
                 tax = ((Math.floor(totalCost * 0.09))/100);
                 totalCost = (totalCost/100)
                 subtotal = ((Math.floor((totalCost + tax)*100))/100)
@@ -136,14 +135,8 @@ function addItem()
                 taxText.innerText = "Tax cost (9%):$"+ (tax2)
                 totalText.innerText = "Subtotal:$" + (subtotal2)
                 }
-            }
             break;
         }
-        // else
-        // {
-        //     alert ("Item not found.")
-        //     break;
-        // }
     }
 }
 
