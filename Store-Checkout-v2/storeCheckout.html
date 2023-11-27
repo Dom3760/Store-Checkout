@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>https://StoreCheckout.com</title>
+    <link rel="stylesheet" href="storeCheckout.css">
+    <script src="storeCheckout.js" defer></script>
+</head>
+<body>
+    <section id="pageContent">
+        <section id="topOfPage">
+            <h1>Checkout</h1>
+            <div id="costContainer">
+                <p id="totatBeforeTaxText">Total before tax : </p>
+                <p id="taxText">Tax cost(9%) : </p>
+                <p id="totalText">Subtotal : </p>
+                <button>Checkout</button>
+            </div>
+            <span id="barcodeContainer">
+                <label for="barcodeNum">Barcode #</label>
+                <input type="text" id="barcodeNum" placeholder="Scan Here" required>
+            </span>
+            <label for="quantity">Quantity Of product</label>
+            <input type="number" id="quantity" name="quantity" required>
+            <br>
+            <br>
+            <button id="Add" type="submit">Add To Cart</button>
+            <hr>
+        </section>
+        <h2>Your Cart</h2>
+        <section id="cartSection">
+        </section>
+    </section>
+</body>
+</html>
