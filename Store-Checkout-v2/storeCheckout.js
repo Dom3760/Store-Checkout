@@ -23,14 +23,16 @@ function addItem() {
         alert("Please enter a barcode number");
         return;
     }
-
+    // nan is not a number
+    // if it isnt a number then alert user to add valid number
     if (isNaN(quantity) || quantity <= 0) {
         alert("Please enter a valid quantity (1-∞)");
         return;
     }
-
+    //arrow function makes it find if item barcode num matches the barcode number that the user entered.
     const currentItem = items.find(item => item.barcodeNum === barcode);
 
+    //if barcode is not found on the list it will alert that the item is not found
     if (!currentItem) {
         alert("Item not found with the given barcode");
         return;
@@ -39,7 +41,7 @@ function addItem() {
     const existingCartItem = itemsInCart.find(cartItem => cartItem.item === currentItem);
 
     if (existingCartItem) {
-        // Item is already in the cart, update quantity
+        // if item is already in the cart, update quantity
         existingCartItem.quantity += quantity;
         existingCartItem.quantityText.innerText = existingCartItem.quantity;
     } else {
@@ -73,6 +75,7 @@ function addItem() {
         quantityBox.appendChild(quantityText);
         quantityBox.appendChild(plusButton);
 
+        //if the plus button is pushed it will set the parameter to true, if minus is pushed it will set parameter to false
         plusButton.addEventListener("click", () => updateQuantity(true));
         minusButton.addEventListener("click", () => updateQuantity(false));
 
@@ -82,7 +85,7 @@ function addItem() {
 
     updateCartTotal();
 }
-
+//function that will change the quantity of the item in the cart
 function updateQuantity(increase) {
     const barcode = input.value;
     const currentItem = items.find(item => item.barcodeNum === barcode);
@@ -104,7 +107,7 @@ function updateQuantity(increase) {
         updateCartTotal();
     }
 }
-
+//function that will update the cost of the items in the cart and display the cost
 function updateCartTotal() {
     totalCost = itemsInCart.reduce((total, cartItem) => total + (cartItem.item.price * cartItem.quantity), 0);
     tax = Math.floor(totalCost * 0.09) / 100;
@@ -316,5 +319,5 @@ const  spiralNotebook= {
 const items = [handSanitiser, multiportAdapter, javaScriptTextbook, xeroxPaper, firstAidKit, boxOfPencils, sanitizingWipes,
         N95FaceMasks, kleenex, handSanitizer, printerPaper, brushPens, Scissors, iOSProgrammingTextbook, spiralNotebook]
 
-//event listener that will listen for a click from the add button
+//event listener that will listen for a click from the add button, and will add items to cart
 button.addEventListener("click",addItem);

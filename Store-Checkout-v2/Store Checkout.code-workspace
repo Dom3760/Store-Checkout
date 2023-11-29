@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "../Store Checkout"
+		},
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "Store-Checkout-v2"
+	}
+}
